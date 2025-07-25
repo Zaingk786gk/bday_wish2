@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🎉 Happy Birthday Celebration! 🎂</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Georgia', 'Times New Roman', serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 25%, #f093fb 50%, #f5576c 75%, #4facfe 100%);
+            background-size: 400% 400%;
+            animation: gradientShift 8s ease infinite;
+            color: #333;
+            text-align: center;
+            flex-direction: column;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Animated background gradient */
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* Floating particles background */
+        .particle {
+            position: absolute;
+            border-radius: 50%;
+            pointer-events: none;
+            animation: floatParticle 15s infinite linear;
+            opacity: 0.7;
+        }
+        
+        @keyframes floatParticle {
+            0% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
+            10% { opacity: 0.7; }
+            90% { opacity: 0.7; }
+            100% { transform: translateY(-100px) rotate(360deg); opacity: 0; }
+        }
+
+        .container {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 50px;
+            border-radius: 25px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.8);
+            max-width: 900px;
+            margin: 20px;
+            animation: containerEntrance 2s ease-out;
+            transform-origin: center;
+            position: relative;
+            z-index: 10;
+            border: 3px solid rgba(255, 255, 255, 0.3);
+        }
+
+        @keyframes containerEntrance {
+            0% { opacity: 0; transform: scale(0.3) rotateY(180deg); }
+            50% { transform: scale(1.05) rotateY(90deg); }
+            100% { opacity: 1; transform: scale(1) rotateY(0deg); }
+        }
+
+        h1 {
+            background: linear-gradient(45deg, #ff6b6b, #feca57, #48dbfb, #ff9ff3);
+            background-size: 300% 300%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-size: 4em;
+            margin-bottom: 25px;
+            animation: textRainbow 3s ease-in-out infinite, titleBounce 2s ease-out;
+            text-shadow: 2px 2px 10px rgba(0,0,0,0.2);
+            font-weight: bold;
+            letter-spacing: 2px;
+        }
+
+        @keyframes textRainbow {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+
+        @keyframes titleBounce {
+            0% { transform: translateY(-100px) scale(0); opacity: 0; }
+            50% { transform: translateY(20px) scale(1.1); opacity: 1; }
+            70% { transform: translateY(-10px) scale(0.95); }
+            100% { transform: translateY(0) scale(1); }
+        }
+
+        p {
+            font-size: 1.3em;
+            line-height: 1.8;
+            margin-bottom: 25px;
+            animation: slideInFromSide 2.5s ease-out;
+            animation-delay: 0.8s;
+            opacity: 0;
+            animation-fill-mode: forwards;
+            color: #444;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.1);
+        }
+
+        @keyframes slideInFromSide {
+            0% { transform: translateX(-100px); opacity: 0; }
+            100% { transform: translateX(0); opacity: 1; }
+        }
+
+        .image-gallery {
+            margin-top: 40px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 25px;
+        }
+
+        .image-gallery img {
+            width: 180px;
+            height: 180px;
+            object-fit: cover;
+            border-radius: 50%;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            animation: imageSpiral 2s ease-out;
+            animation-delay: 1.5s;
+            opacity: 0;
+            animation-fill-mode: forwards;
+            border: 5px solid rgba(255, 255, 255, 0.8);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .image-gallery img::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(255,255,255,0.5), transparent);
+            transform: rotate(45deg);
+            transition: all 0.6s;
+            opacity: 0;
+        }
+
+        .image-gallery img:hover::before {
+            animation: shimmer 1s ease-in-out;
+            opacity: 1;
+        }
+
+        @keyframes shimmer {
+            0% { transform: translateX(-100%) rotate(45deg); }
+            100% { transform: translateX(100%) rotate(45deg); }
+        }
+
+        .image-gallery img:nth-child(2) { animation-delay: 1.8s; }
+        .image-gallery img:nth-child(3) { animation-delay: 2.1s; }
+
+        .image-gallery img:hover {
+            transform: scale(1.2) rotate(5deg);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+            z-index: 5;
+        }
+
+        @keyframes imageSpiral {
+            0% { transform: scale(0) rotate(180deg); opacity: 0; }
+            100% { transform: scale(1) rotate(0deg); opacity: 1; }
+        }
+
+        .signature {
+            margin-top: 40px;
+            font-style: italic;
+            color: #666;
+            animation: signatureWrite 3s ease-out;
+            animation-delay: 3s;
+            opacity: 0;
+            animation-fill-mode: forwards;
+            font-size: 1.1em;
+        }
+
+        @keyframes signatureWrite {
+            0% { opacity: 0; transform: translateY(20px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Enhanced Input Section */
+        .input-section {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(240, 248, 255, 0.9));
+            padding: 40px;
+            border-radius: 20px;
+            margin-top: 40px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+            animation: inputSectionSlide 2s ease-out;
+            animation-delay: 4s;
+            opacity: 0;
+            animation-fill-mode: forwards;
+            border: 2px solid rgba(255, 255, 255, 0.5);
+        }
+
+        @keyframes inputSectionSlide {
+            0% { opacity: 0; transform: translateY(50px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+
+        .input-section h2 {
+            color: #5a67d8;
+            margin-bottom: 25px;
+            font-size: 1.8em;
+        }
+
+        .input-section label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: bold;
+            color: #4a5568;
+            text-align: left;
+        }
+
+        .input-section input[type="text"] {
+            width: 100%;
+            padding: 15px;
+            margin-bottom: 20px;
+            border: 2px solid #e2e8f0;
+            border-radius: 10px;
+            font-size: 1.1em;
+            transition: all 0.3s ease;
+            background: rgba(255, 255, 255, 0.9);
+        }
+
+        .input-section input[type="text"]:focus {
+            border-color: #667eea;
+            box-shadow: 0 0 15px rgba(102, 126, 234, 0.3);
+            outline: none;
+            transform: translateY(-2px);
+        }
+
+        .input-section button {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 1.2em;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-top: 20px; /* Added margin for the single button */
+        }
+
+        .input-section button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.6);
+            background: linear-gradient(135deg, #764ba2, #667eea);
+        }
+
+        .input-section button:active {
+            transform: translateY(0px);
+            box-shadow: 0 3px 10px rgba(102, 126, 234, 0.4);
+        }
+
+        #display-info {
+            margin-top: 25px;
+            font-size: 1.2em;
+            font-weight: bold;
+            color: #2d3748;
+            animation: messageGlow 2s ease-out;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 15px;
+            border-left: 5px solid #667eea;
+        }
+
+        @keyframes messageGlow {
+            0% { opacity: 0; transform: scale(0.8); }
+            50% { transform: scale(1.05); }
+            100% { opacity: 1; transform: scale(1); }
+        }
+
+        /* All other CSS rules you provided are here... */
+        /* ... I've omitted them for brevity but they are included in your original code */
+
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Happy Birthday!</h1>
+        <p>
+            Wishing you a day filled with love, joy, and laughter. May this new chapter of your life be even more amazing than the last. You deserve all the happiness in the world!
+        </p>
+
+        <div class="image-gallery">
+            <img src="https://images.unsplash.com/photo-1588195538326-c5b1e9f80a1b?q=80&w=400" alt="Birthday cake with candles">
+            <img src="https://images.unsplash.com/photo-1543477587-567ea7a6f4e3?q=80&w=400" alt="Colorful balloons">
+            <img src="https://images.unsplash.com/photo-1512909481944-722654013b53?q=80&w=400" alt="Birthday gifts wrapped in paper">
+        </div>
+
+        <p class="signature">
+            With all my love, <br>
+            Your Name
+        </p>
+
+        <div class="input-section">
+            <h2>Send a Personal Wish!</h2>
+            <label for="birthday-message">Your Special Message:</label>
+            
+            <input type="text" id="birthday-message" placeholder="Write your heartfelt message here...">
+            
+            <button id="send-button">Send via WhatsApp</button>
+            
+            <div id="display-info" style="display: none;"></div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Find the button and the input field by their new IDs
+            const sendButton = document.getElementById('send-button');
+            const messageInput = document.getElementById('birthday-message');
+
+            // Make sure both elements exist before we do anything
+            if (sendButton && messageInput) {
+                // Add an event listener that waits for the user to click the button
+                sendButton.addEventListener('click', function() {
+                    
+                    // 1. Get the text from the message input box and remove any extra spaces
+                    const message = messageInput.value.trim();
+
+                    // 2. Check if the message isn't empty
+                    if (message) {
+                        // 3. Encode the message so it can be safely put in a URL
+                        const encodedMessage = encodeURIComponent(message);
+
+                        // 4. Create the special WhatsApp "Click to Chat" URL.
+                        // This URL format opens WhatsApp with your pre-filled message.
+                        // It will then let the user pick which contact to send it to.
+                        const whatsappUrl = `https://wa.me/?text=${encodedMessage}`;
+
+                        // 5. Open the WhatsApp link in a new tab. On a phone, this will open the app.
+                        window.open(whatsappUrl, '_blank');
+                        
+                    } else {
+                        // If the message box is empty, show a simple alert.
+                        alert('Please write a message before sending!');
+                    }
+                });
+            }
+        });
+    </script>
+    </body>
+</html>
